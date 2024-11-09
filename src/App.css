@@ -1,0 +1,28 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html {
+  width: 100%;
+}
+
+/* .App {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+} */
+
+.form-input {
+  width: 30rem;
+  border: 1px rgb(0, 0, 0) solid;
+  padding: 0.25rem;
+}
+
+label {
+  font-weight: bold;
+}
+
+.center {
+  display: flex;
+  justify-content: center;
+}
