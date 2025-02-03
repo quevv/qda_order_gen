@@ -135,14 +135,14 @@ ${formData.infoLink}
   };
 
   return (
-    <div className="App flex-col">
+    <div className="App flex items-center flex-col">
       <header className="App-header w-[100%] center p-5 my-5">
         <h1 className='font-bold text-2xl text-cyan-600'>
           QDA - Order Information
         </h1>
       </header>
-      <div className='w-[100%] flex justify-center flex-col'>
-        <div className='Info-enter w-fit py-4 px-10 bg-white rounded m-auto'>
+      <div className='max-w-[100%] flex justify-center flex-col md:w-[50%] '>
+        <div className='Info-enter w-full py-4 px-10 bg-white rounded m-auto'>
           <form className="flex flex-col" onSubmit={handleSubmit}>
 
             <label htmlFor="device">Device:</label>
@@ -263,7 +263,7 @@ ${formData.infoLink}
 
           </form>
           <div
-            className="mt-4 border p-2 bg-gray-100 rounded w-[30rem] overflow-x-auto whitespace-pre-wrap break-words"
+            className="mt-4 border p-2 bg-gray-100 rounded w-[100%] overflow-x-auto whitespace-pre-wrap break-words"
             onClick={handleCopy}
           >
             {displayResult}
