@@ -141,7 +141,7 @@ ${formData.infoLink}
           QDA - Order Information
         </h1>
       </header>
-      <div className='max-w-[100%] flex justify-center flex-col md:w-[50%] '>
+      <div className='w-[100%] max-w-[100%] flex justify-center flex-col md:w-[50%] '>
         <div className='Info-enter w-full py-4 px-10 bg-white rounded m-auto'>
           <form className="flex flex-col" onSubmit={handleSubmit}>
 
