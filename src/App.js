@@ -22,16 +22,16 @@ function App() {
 
   // List of device options
   const deviceOptions = [
-    'Sim Unlimited call + 1Gb',
-    'Sim Unlimited call + 5Gb',
-    'Sim Unlimited call + 25Gb',
+    'Sim Unlimited call + 1GB',
+    'Sim Unlimited call + 5GB',
+    'Sim Unlimited call + 25GB',
     'Sim Unlimited call + 50GB (DCM)',
     'Sim Unlimited call + 50GB (SB)',
     'Sim Unlimited call + 100GB',
-    'Sim data 2GB',
-    'Sim data 4GB',
-    'Sim data 6GB',
-    'Sim data 10GB',
+    'Sim data 2GB 1 year plan',
+    'Sim data 4GB 1 year plan',
+    'Sim data 6GB 1 year plan',
+    'Sim data 10GB 1 year plan',
     'Sim data 35GB',
     'Sim data 50GB',
     'Sim data 100GB',
@@ -71,12 +71,8 @@ function App() {
   const validateForm = () => {
     const newErrors = {};
 
-    if (!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i.test(formData.gmail)) {
+    if (formData.gmail && !/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i.test(formData.gmail)) {
       newErrors.gmail = 'Invalid email address';
-    }
-
-    if (formData.phoneNumber && !/^\d+$/.test(formData.phoneNumber)) {
-      newErrors.phoneNumber = 'Phone number should contain only digits';
     }
 
     if (!/^[¥]?\d+(\.\d{1,2})?$/.test(formData.monthlyFee)) {
@@ -101,7 +97,7 @@ function App() {
     const firstPaymentTotal = parseFloat(formData.firstPayment.replace(/¥/, '')) + deliveryFee;
 
     // Display result based on selected language
-    if (language === 'ENG') {
+    if (language === 'CHECK') {
       setDisplayResult(`
         **Devices: ${formData.device}
 - Name: ${formData.name}
@@ -118,8 +114,8 @@ function App() {
 - Tên: ${formData.name}
 - Địa chỉ: ${formData.address}
 - Gmail: ${formData.gmail}
-- sđt: ${formData.phoneNumber}
-- smp: ${formData.monthlyFee}
+- Sđt: ${formData.phoneNumber}
+- Smp: ${formData.monthlyFee}
 - Ship daibiki freeship: ¥${firstPaymentTotal}
 - Thời gian nhận: ${formData.receiveTime}
 ${formData.platform}
@@ -261,11 +257,17 @@ ${formData.infoLink}
             />
 
             <div className="flex gap-4 mt-4 w-[100%] flex justify-around">
-              <button type="button" onClick={() => handleSubmit('ENG')} className="bg-blue-500 hover:bg-blue-400 text-white w-[5rem] rounded-md p-2">ENG</button>
-              <button type="button" onClick={() => handleSubmit('VN')} className="bg-red-500 hover:bg-red-400 text-white w-[5rem] rounded-md p-2">VN</button>
+              <button type="button" onClick={() => handleSubmit('CHECK')} className="bg-blue-500 hover:bg-blue-400 text-white w-[6rem] rounded-md p-2 font-bold">Kiểm Tra</button>
+              <button type="button" onClick={() => handleSubmit('CONFIRM')} className="bg-green-500 hover:bg-green-400 text-white w-[6rem] rounded-md p-2 font-bold">Chốt Đơn</button>
             </div>
-            {displayResult && <pre className="mt-4 border p-2" onClick={handleCopy}>{displayResult}</pre>}
+
           </form>
+          <div
+            className="mt-4 border p-2 bg-gray-100 rounded w-[30rem] overflow-x-auto whitespace-pre-wrap break-words"
+            onClick={handleCopy}
+          >
+            {displayResult}
+          </div>
         </div>
         <div>.</div>
       </div>
