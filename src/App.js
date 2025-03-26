@@ -67,6 +67,9 @@ function App() {
       setFilteredDevices(newFilteredDevices);
     }
   };
+  function capitalizeWord(word) {
+    return word.charAt(0).toUpperCase() + word.slice(1).toLowerCase();
+  }
 
   const validateForm = () => {
     const newErrors = {};
@@ -100,24 +103,24 @@ function App() {
     if (language === 'CHECK') {
       setDisplayResult(`
         **Devices: ${formData.device}
-- Name: ${formData.name}
-- Address: ${formData.address}
-- Gmail: ${formData.gmail}
-- Phone number: ${formData.phoneNumber}
-- Monthly fee: ${formData.monthlyFee}
-- Total of first payment: ${formData.firstPayment} + ¥1500 (delivery fee)
-- Time to receive: ${formData.receiveTime}
+-Name: ${capitalizeWord(formData.name)}
+-Address: ${formData.address}
+-Gmail: ${formData.gmail}
+-Phone number: ${formData.phoneNumber}
+-Monthly fee: ${formData.monthlyFee}
+-Total of first payment: ${formData.firstPayment} + ¥1500 (delivery fee)
+-Time to receive: ${formData.receiveTime}
       `.trim());
     } else {
       setDisplayResult(`
         **Thiết bị: ${formData.device}
-- Tên: ${formData.name}
-- Địa chỉ: ${formData.address}
-- Gmail: ${formData.gmail}
-- Sđt: ${formData.phoneNumber}
-- Smp: ${formData.monthlyFee}
-- Ship daibiki freeship: ¥${firstPaymentTotal}
-- Thời gian nhận: ${formData.receiveTime}
+-Tên: ${formData.name}
+-Địa chỉ: ${formData.address}
+-Gmail: ${formData.gmail}
+-Sđt: ${formData.phoneNumber}
+-Smp: ${formData.monthlyFee}
+-Ship daibiki freeship: ¥${firstPaymentTotal}
+-Thời gian nhận: ${formData.receiveTime}
 ${formData.platform}
 ${formData.infoLink}
       `.trim());
