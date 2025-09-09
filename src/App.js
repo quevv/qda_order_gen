@@ -67,9 +67,14 @@ function App() {
       setFilteredDevices(newFilteredDevices);
     }
   };
-  function capitalizeWord(word) {
-    return word.charAt(0).toUpperCase() + word.slice(1).toLowerCase();
-  }
+  function capitalizeName(name) {
+  return name
+    .toLowerCase()
+    .split(" ")
+    .filter(word => word.trim() !== "") // loại bỏ khoảng trắng thừa
+    .map(word => word.charAt(0).toUpperCase() + word.slice(1))
+    .join(" ");
+}
 
   const validateForm = () => {
     const newErrors = {};
@@ -103,7 +108,7 @@ function App() {
     if (language === 'CHECK') {
       setDisplayResult(`
         **Devices: ${formData.device}
--Name: ${capitalizeWord(formData.name)}
+-Name: ${capitalizeName(formData.name)}
 -Address: ${formData.address}
 -Gmail: ${formData.gmail}
 -Phone number: ${formData.phoneNumber}
@@ -119,7 +124,7 @@ function App() {
 -Gmail: ${formData.gmail}
 -Sđt: ${formData.phoneNumber}
 -Smp: ${formData.monthlyFee}
--Ship daibiki freeship: ¥${firstPaymentTotal}
+-Ship daibiki: ¥${firstPaymentTotal}
 -Thời gian nhận: ${formData.receiveTime}
 ${formData.platform}
 ${formData.infoLink}
